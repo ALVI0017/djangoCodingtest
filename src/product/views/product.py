@@ -44,11 +44,11 @@ class ProductListView(ListView):
         context['variants'] = ProductVariantPrice.objects.all()
         context['allvariants'] = ProductVariant.objects.all()
         
-        context["title"]=self.request.GET.get("title")
-        context["variant"]=self.request.GET.get("variant")
-        context["price_from"]=self.request.GET.get("price_from")
-        context["price_to"]=self.request.GET.get("price_to")
-        context["date"]=self.request.GET.get("date")
+        context["title"]=self.request.GET.get("title","")
+        context["variant"]=self.request.GET.get("variant","")
+        context["price_from"]=self.request.GET.get("price_from","")
+        context["price_to"]=self.request.GET.get("price_to","")
+        context["date"]=self.request.GET.get("date","")
       
         return context
 
@@ -109,10 +109,6 @@ class ProductListView(ListView):
             product=Product.objects.filter(Q(title__icontains=title_val) & Q(pk__in=var))
         
         
-
-            
-        
- 
         return product
     
     
